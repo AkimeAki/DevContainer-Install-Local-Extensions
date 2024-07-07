@@ -3,7 +3,13 @@ import * as vscode from "vscode";
 export async function activate(context: vscode.ExtensionContext) {
 	const config = vscode.workspace.getConfiguration();
 	const extensions = vscode.extensions.all;
-	const extensionIds = extensions.map((ext) => ext.id);
+	const extensionIds = extensions
+		.map((ext) => ext.id)
+		.filter(
+			(id) =>
+				!/^vscode\./.test(id) &&
+				id !== "AkimeAki.devcontainer-install-local-extensions",
+		);
 	const settingIds = config.get(
 		"dev.containers.defaultExtensionsIfInstalledLocally",
 	) as string[];
