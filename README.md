@@ -1,8 +1,8 @@
 # DevContainer Install Local Extensions
 
-この拡張機能は、開発コンテナにローカルにインストールされている拡張機能をインストールする設定`dev.containers.defaultExtensionsIfInstalledLocally`を自動的に設定する拡張機能です。
+開発コンテナにローカルにインストールされている拡張機能をインストールする設定`dev.containers.defaultExtensionsIfInstalledLocally`に自動的にローカルにインストールされている全ての拡張機能を設定する拡張機能です。
 
-This extension automatically sets the configuration `dev.containers.defaultExtensionsIfInstalledLocally`, which installs extensions that are locally installed in the development container.
+This extension automatically sets all locally installed extensions to `dev.containers.defaultExtensionsIfInstalledLocally`, which is the setting for installing extensions that are locally installed in the development container.
 
 ## Features
 
