@@ -10,3 +10,9 @@ webpack.config.js
 **/*.map
 **/*.ts
 **/.vscode-test.*
+.devcontainer.json
+biome.json
+compose.yml
+**/*.code-workspace
+Dockerfile
+.github/**
