@@ -1,0 +1,25 @@
+{
+	"name": "DevContainer Install Local Extensions",
+	"dockerComposeFile": "./compose.yml",
+	"service": "app",
+	"workspaceFolder": "/app/",
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"biomejs.biome",
+				"EditorConfig.EditorConfig",
+				"amodio.tsl-problem-matcher",
+				"ms-vscode.extension-test-runner"
+			],
+			"settings": {
+				"editor.formatOnSave": true,
+				"editor.defaultFormatter": "biomejs.biome",
+				"files.readonlyInclude": {
+					"node_modules/**/*": true,
+					".git/**/*": true
+				}
+			}
+		}
+	},
+	"shutdownAction": "stopCompose"
+}
