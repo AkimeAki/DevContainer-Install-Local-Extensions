@@ -2,7 +2,7 @@
 	"name": "devcontainer-install-local-extensions",
 	"displayName": "DevContainer Install Local Extensions",
 	"description": "This extension automatically sets all locally installed extensions to `dev.containers.defaultExtensionsIfInstalledLocally`, which is the setting for installing extensions that are locally installed in the development container.",
-	"version": "1.0.2",
+	"version": "1.0.3",
 	"engines": {
 		"vscode": "^1.91.0",
 		"node": "20.15.0"
@@ -13,7 +13,7 @@
 		"Local",
 		"defaultExtensionsIfInstalledLocally"
 	],
-	"icon": "",
+	"icon": "images/icon.png",
 	"categories": ["Other"],
 	"activationEvents": ["*"],
 	"repository": {
