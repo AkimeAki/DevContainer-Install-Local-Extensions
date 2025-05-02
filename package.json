@@ -1,10 +1,10 @@
 {
 	"name": "devcontainer-install-local-extensions",
 	"displayName": "DevContainer Install Local Extensions",
-	"description": "This extension automatically sets all locally installed extensions to `dev.containers.defaultExtensionsIfInstalledLocally`, which is the setting for installing extensions that are locally installed in the development container.",
-	"version": "1.0.3",
+	"description": "開発コンテナにローカルにインストールされている拡張機能をインストールする設定「dev.containers.defaultExtensions」にローカルにインストールされている全ての拡張機能を自動的に設定する拡張機能です。",
+	"version": "1.1.0",
 	"engines": {
-		"vscode": "^1.91.0",
+		"vscode": "^1.99.3",
 		"node": "20.15.0"
 	},
 	"keywords": [
@@ -14,8 +14,12 @@
 		"defaultExtensionsIfInstalledLocally"
 	],
 	"icon": "images/icon.png",
-	"categories": ["Other"],
-	"activationEvents": ["*"],
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onStartupFinished"
+	],
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/AkimeAki/DevContainer-Install-Local-Extensions.git"
@@ -26,27 +30,26 @@
 		"commands": []
 	},
 	"scripts": {
-		"vscode:prepublish": "npm run package",
 		"compile": "webpack",
-		"watch": "webpack --watch",
 		"package": "webpack --mode production --devtool hidden-source-map",
-		"pretest": "npm run compile-tests && npm run compile && npm run lint",
-		"lint": "npx @biomejs/biome lint --write ./ --log-level=info",
-		"test": "vscode-test",
-		"format": "npx @biomejs/biome format --write ./ --log-level=info",
+		"build": "rm -rf ./dist/ && npm run compile && npm run vscode:package",
+		"lint": "biome lint ./",
+		"format": "prettier --write './**/*'",
 		"vscode:package": "vsce package"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "1.8.3",
-		"@types/mocha": "^10.0.7",
+		"@biomejs/biome": "1.9.4",
+		"@types/mocha": "10.0.7",
 		"@types/node": "20.x",
-		"@types/vscode": "^1.91.0",
-		"@vscode/test-cli": "^0.0.9",
-		"@vscode/test-electron": "^2.4.0",
-		"ts-loader": "^9.5.1",
-		"typescript": "^5.4.5",
-		"vsce": "^2.15.0",
-		"webpack": "^5.92.1",
-		"webpack-cli": "^5.1.4"
+		"@types/vscode": "1.91.0",
+		"@vscode/test-cli": "0.0.9",
+		"@vscode/test-electron": "2.4.0",
+		"prettier": "3.5.3",
+		"prettier-plugin-sh": "0.17.2",
+		"ts-loader": "9.5.1",
+		"typescript": "5.4.5",
+		"vsce": "2.15.0",
+		"webpack": "5.92.1",
+		"webpack-cli": "5.1.4"
 	}
 }
