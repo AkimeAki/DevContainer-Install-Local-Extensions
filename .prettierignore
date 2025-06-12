@@ -1,0 +1,12 @@
+/node_modules/
+*.ico
+*.txt
+*.png
+*.ttf
+.editorconfig
+*.jpg
+*.jpeg
+.npmrc
+/.husky/
+.env.*
+LICENSE

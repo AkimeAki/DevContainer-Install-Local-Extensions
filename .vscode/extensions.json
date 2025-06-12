@@ -1,0 +1,9 @@
+{
+	"recommendations": [
+		"biomejs.biome",
+		"esbenp.prettier-vscode",
+		"EditorConfig.EditorConfig",
+		"amodio.tsl-problem-matcher",
+		"ms-vscode.extension-test-runner"
+	]
+}

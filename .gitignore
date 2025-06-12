@@ -1,5 +1,8 @@
-out
-dist
-node_modules
+/out/
+/dist/
+/node_modules/
 .vscode-test/
 *.vsix
+*.code-workspace*
+!example.code-workspace*
+/.git/
