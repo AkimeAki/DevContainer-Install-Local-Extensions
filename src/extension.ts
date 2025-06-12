@@ -2,16 +2,14 @@ import * as vscode from "vscode";
 
 export async function activate(context: vscode.ExtensionContext) {
 	const config = vscode.workspace.getConfiguration();
-	console.log(vscode.extensions.all);
-
-	const extensions = vscode.extensions.all;
+	const extensions = vscode.extensions.all.filter((extension) => {
+		return !extension.extensionPath.includes(vscode.env.appRoot);
+	});
 
 	const extensionIds = extensions
 		.map((ext) => ext.id)
 		.filter((id) => !/^vscode\./.test(id) && id !== "AkimeAki.devcontainer-install-local-extensions");
-	const settingIds = config.get("dev.containers.defaultExtensionsIfInstalledLocally") as string[];
-
-	console.log(settingIds);
+	const settingIds = config.get<string[]>("dev.containers.defaultExtensions", []);
 
 	// 設定されているけど、アンインストールされた拡張機能
 	const deletedExtensionIds = settingIds.filter((id) => !extensionIds.includes(id));
@@ -21,11 +19,7 @@ export async function activate(context: vscode.ExtensionContext) {
 
 	// インストールされている拡張機能と設定されている拡張機能に差分がある場合に処理を実行
 	if (deletedExtensionIds.length !== 0 || notSetExtensionIds.length !== 0) {
-		await config.update(
-			"dev.containers.defaultExtensionsIfInstalledLocally",
-			extensionIds,
-			vscode.ConfigurationTarget.Global
-		);
+		await config.update("dev.containers.defaultExtensions", extensionIds, vscode.ConfigurationTarget.Global);
 
 		const addedSettingsMessage = notSetExtensionIds.length !== 0 ? ` 追加: ${notSetExtensionIds.join(",")}` : "";
 		const deletedSettingsMessage =
